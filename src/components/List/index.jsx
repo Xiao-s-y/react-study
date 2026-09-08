@@ -1,15 +1,24 @@
 import React from 'react'
 import './index.css'
-import Item from '../Item'
 
-export default function List({todos,updateTodo,deleteTodo}) {
- return (
-       <ul className="todo-main">
-        {
-            todos.map((todo)=>{
-                return  <Item key={todo.id} todo={todo} updateTodo={updateTodo}  deleteTodo={deleteTodo}/>
-            })
-        }
-       </ul>
-     )
+export default function List({user}) {
+  return ( 
+    user.isFirst? <h2>欢迎使用，输入关键字，随后点击搜索</h2>:
+    user.isLoading? <h2>Loading......</h2>:
+    user.err?<h2 style={{color:'red'}}>{user.err}</h2>:
+    user.users.map(userObj=>{
+        return (
+            <div className="row" key={userObj}>
+                    <div  className="card">
+                        <a rel="noreferrer" href={userObj.html_url}  target="_blank">
+                            <img alt="head_portrait" src={userObj.avatar_url}  style={{width:'100px'}}/>
+                         </a>
+                        <p className="card-text">{userObj.login}</p>
+                    </div>         
+        </div>      
+
+        )
+    })
+    )
+
 }
