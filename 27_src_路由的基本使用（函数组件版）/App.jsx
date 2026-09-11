@@ -1,13 +1,10 @@
-import React, { Component } from 'react'
-import {Link,Route} from 'react-router-dom'
+import React from 'react'
+import {Link,Route,Routes} from 'react-router-dom'
 import About from './components/About'
-import Home from './components/Home'
+import Home from './components/Home' 
 
-
-export default class App extends Component {
-
-  render() {
-    return (
+export default function App() {
+  return (
     <div>
         <div className="row">
           <div className="col-xs-offset-2 col-xs-8">
@@ -23,8 +20,8 @@ export default class App extends Component {
 
            {/* 在React中靠路由链接实现切换组件  编写路由链接*/}
           
-            <Link className="list-group-item" to="/about">About</Link>
-            <Link className="list-group-item " to="/home">Home</Link>
+           <Link className="list-group-item" to="/about">About</Link>
+           <Link className="list-group-item " to="/home">Home</Link> 
           
          </div>
         </div>
@@ -32,15 +29,15 @@ export default class App extends Component {
           <div className="panel">
            <div className="panel-body">
             {/* 注册路由 */}
-            
-               <Route path='/about' component={About}/>
-               <Route path='/home' component={Home}/>
+            <Routes>
+                <Route path='/about' element={<About/>}/>
+                <Route path='/home' element={<Home/>}/>
+            </Routes>
            
            </div>
           </div>
         </div>
       </div>
-    </div> 
-    )
-  }
+    </div>
+  )
 }
