@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 //引入connect用于连接UI组件与redux
 import {connect} from 'react-redux'
 import { createIncrementAction,createDecrementAction,createIncrementAsyncAction } from '../../redux/actions/count'
